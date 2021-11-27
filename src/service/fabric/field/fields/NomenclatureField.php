@@ -27,8 +27,10 @@ class NomenclatureField implements IField
         $this->price = $price;
         $this->size = $size;
 
-        foreach (array_unique($colors) as $color) {
-            if ($color) $this->colors[] = $color;
+        if ($colors) {
+            foreach (array_unique($colors) as $color) {
+                if ($color) $this->colors[] = $color;
+            }
         }
     }
 
