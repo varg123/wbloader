@@ -16,36 +16,7 @@ class ProductFabric
 {
     static function createProduct($offer)
     {
-        /**
-         * @var $offer Offer
-         */
-        $product = null;
-        switch ($offer->category) {
-            case 'будильники':
-                $product = new AlarmClock($offer);
-                break;
-            case 'настольные часы':
-            case 'напольные часы':
-                $product = new TableClock($offer);
-                break;
-            case 'Настенные часы':
-                $product = new WallClock($offer);
-                break;
-            case 'Мужские часы':
-            case 'Женские часы':
-            case 'Детские часы':
-            case 'Часы наклейки':
-            case 'Stailer':
-                $product = new WristWatches($offer);
-                break;
-            case 'ремешки':
-            case 'браслеты':
-                $product = new BraceletsWatches($offer);
-                break;
-            case 'статуэтки':
-                $product = new Figurines($offer);
-                break;
-        }
+        $product = new WristWatches($offer);
         return $product ? $product->getProduct() : false;
     }
 
@@ -64,33 +35,7 @@ class ProductFabric
             $card->nomenclatures[0]->variations[0]->addin =[];
         }
 
-        $product = null;
-        switch ($offer->category) {
-            case 'будильники':
-                $product = new AlarmClock($offer);
-                break;
-            case 'настольные часы':
-            case 'напольные часы':
-                $product = new TableClock($offer);
-                break;
-            case 'Настенные часы':
-                $product = new WallClock($offer);
-                break;
-            case 'Мужские часы':
-            case 'Женские часы':
-            case 'Детские часы':
-            case 'Часы наклейки':
-            case 'Stailer':
-                $product = new WristWatches($offer);
-                break;
-            case 'ремешки':
-            case 'браслеты':
-                $product = new BraceletsWatches($offer);
-                break;
-            case 'статуэтки':
-                $product = new Figurines($offer);
-                break;
-        }
+        $product = new WristWatches($offer);
         return $product ? $product->getProduct($card) : false;
     }
 }
