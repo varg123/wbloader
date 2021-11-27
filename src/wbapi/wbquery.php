@@ -31,13 +31,18 @@ class WBQuery
          */
         foreach ($priceDtoArray as $item) {
             $param[] = [
-                "nmId" => $item->nmId,
-                "price" => $item->price
+                "nmId" => (int)$item->nmId,
+                "price" => (int)$item->price
             ];
         }
         if ($param) {
+            print_r(json_encode($param));
             $res = $this->curl->post('https://suppliers-api.wildberries.ru/public/api/v1/prices', $param);
             $responce = json_decode($res, true);
+//            print_r($param);
+            print_r($this->curl->httpStatusCode);
+//            print_r($responce);
+//            die();
             switch ($this->curl->httpStatusCode) {
                 case '400':
                     return new ErrorResponse($responce);
@@ -193,17 +198,13 @@ class WBQuery
             ]
         ];
         if ($card) {
-//            echo json_encode($param,JSON_UNESCAPED_UNICODE);
-            $res = $this->curl->post('https://suppliers-api.wildberries.ru/card/update', $param);
+            $this->curl->post('https://suppliers-api.wildberries.ru/card/update', $param);
             $responce = json_decode($this->curl->rawResponse, true);
             switch ($this->curl->httpStatusCode) {
                 case '200':
-                    print_r($responce);
-//                    die();
-//                    $cards=[];
-//                    foreach ($responce['result']['card'] as $item) {
-//                        $cards[]=new Card($item);
-//                    }
+                    if ($responce['error']['message']) {
+                        throw new \Exception($responce['error']['message']);
+                    }
                     return $responce;
                 default:
                     return new NullDto();
@@ -226,12 +227,9 @@ class WBQuery
             $responce = json_decode($this->curl->rawResponse, true);
             switch ($this->curl->httpStatusCode) {
                 case '200':
-                    print_r($responce);
-//                    die();
-//                    $cards=[];
-//                    foreach ($responce['result']['card'] as $item) {
-//                        $cards[]=new Card($item);
-//                    }
+                    if ($responce['error']['message']) {
+                        throw new \Exception($responce['error']['message']);
+                    }
                     return $responce;
                 default:
                     return new NullDto();
@@ -259,16 +257,29 @@ class WBQuery
             switch ($this->curl->httpStatusCode) {
                 case '200':
                     print_r($responce);
-                    die();
-//                    $cards=[];
-//                    foreach ($responce['result']['card'] as $item) {
-//                        $cards[]=new Card($item);
-//                    }
-                    return $cards;
+                    return $responce;
                 default:
                     return new NullDto();
             }
         }
         return new NullDto();
+    }
+    public function deleteNomenclature($nomenclatureID)
+    {
+        $param = [
+            "id" => 1,
+            "jsonrpc" => "2.0",
+            'params' => [
+                'nomenclatureID' => $nomenclatureID,
+            ]
+        ];
+        $res = $this->curl->post('https://suppliers-api.wildberries.ru/card/deleteNomenclature', $param);
+        $responce = json_decode($this->curl->rawResponse, true);
+        switch ($this->curl->httpStatusCode) {
+            case '200':
+                return true;
+            default:
+                return new NullDto();
+        }
     }
 }
