@@ -132,7 +132,7 @@ class WBQuery
             $param[] = [
                 'warehouseId' => $warehouseId,
                 'barcode' => $item['barcode'],
-                'stock' => $item['stock'],
+                'stock' => (int)$item['stock'],
             ];
         }
         if ($param) {
