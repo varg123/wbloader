@@ -69,7 +69,7 @@ class AlarmClock extends BaseProduct
             $fields[] = new AddinField('Гарантийный срок',  $offer->guarantee);
         }
         if($offer->materialBody) {
-            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
+//            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
         }
 
 

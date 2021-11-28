@@ -115,7 +115,7 @@ class WristWatches extends BaseProduct
                 $cleanOptions = array_merge($cleanOptions, explode(' | ', $option));
             }
         }
-        $fields[] = new MultiAddinField('Особенности часов', $cleanOptions);
+//        $fields[] = new MultiAddinField('Особенности часов', $cleanOptions);
 
 
         $fields[] = new KeysField($offer->vat);

@@ -10,8 +10,8 @@ class Parser implements \Parser\IParser
 
     public function __construct($url)
     {
-        $this->url = 'C:\Users\Professional\Desktop\yml_export.xml';
-//        $this->url = $url;
+//        $this->url = 'C:\Users\Professional\Desktop\yml_export.xml';
+        $this->url = $url;
     }
 
     public function getData(): array
@@ -31,9 +31,8 @@ class Parser implements \Parser\IParser
         foreach ($offers as $offerData) {
             $offer = [];
             $offer['id'] = (string)$offerData->attributes()['id'];
-            $offer['articul'] = 'IDTest'.$offer['id'];
-            $offer['articul2'] = 'idTest1'.$offer['id'];
-            $offer['price'] = (string)$offerData->price;
+            $offer['articul2'] = 'idtv'.$offer['id'];
+            $offer['price'] = (string)((int)$offerData->price*1.15);
 
             foreach ((array)$offerData->categoryId as $categoryId) {
                 $categoryId = (string)$categoryId;
@@ -62,6 +61,8 @@ class Parser implements \Parser\IParser
                 switch ((string)$param->attributes()['name']) {
                     case 'Код товара':
                         $offer['kod'] = (string)$param;
+                        $articul = preg_replace('/[^A-Za-z0-9А-Яа-я\-]/ui', '_', $offer['kod']);
+                        $offer['articul'] = $articul;
                         break;
                     case 'Механизм':
                         $offer['mechanism'] = (string)$param;
@@ -167,9 +168,10 @@ class Parser implements \Parser\IParser
      */
     protected function filterOffers($offerObj)
     {
-        if (in_array($offerObj->id, [101828 ])) {
+
+//        if (in_array($offerObj->id,[110393, 110410])) {
             return true;
-        }
-        return false;
+//        }
+//        return false;
     }
 }

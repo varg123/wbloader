@@ -104,6 +104,8 @@ function main()
             $offerInfo->lastError = '';
             $db->setInfo($offerInfo);
         } catch (\Exception $e) {
+            $log = date('Y-m-d H:i:s request') .' '.print_r($offer, true). ' response:'.print_r($e->getMessage(), true);
+            file_put_contents(__DIR__ . '/logs/log.txt', $log . PHP_EOL, FILE_APPEND);
             $offerInfo->lastError = $e->getMessage();
             $db->setInfo($offerInfo);
             continue;
