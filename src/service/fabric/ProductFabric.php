@@ -45,6 +45,8 @@ class ProductFabric
             case 'статуэтки':
                 $product = new Figurines($offer);
                 break;
+            default:
+                throw new \Exception("не описанная категория");
         }
         return $product ? $product->getProduct() : false;
     }
@@ -90,6 +92,8 @@ class ProductFabric
             case 'статуэтки':
                 $product = new Figurines($offer);
                 break;
+            default:
+                throw new \Exception("не описанная категория");
         }
         return $product ? $product->getProduct($card) : false;
     }

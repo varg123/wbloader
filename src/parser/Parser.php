@@ -32,7 +32,7 @@ class Parser implements \Parser\IParser
             $offer = [];
             $offer['id'] = (string)$offerData->attributes()['id'];
             $offer['articul2'] = 'idtv'.$offer['id'];
-            $offer['price'] = (string)((int)$offerData->price*1.15);
+            $offer['price'] = (string)((int)$offerData->price*1.2);
 
             foreach ((array)$offerData->categoryId as $categoryId) {
                 $categoryId = (string)$categoryId;
@@ -169,7 +169,7 @@ class Parser implements \Parser\IParser
     protected function filterOffers($offerObj)
     {
 
-//        if (in_array($offerObj->id,[110393, 110410])) {
+//        if (in_array($offerObj->id,[110331])) {
             return true;
 //        }
 //        return false;

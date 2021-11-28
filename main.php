@@ -77,6 +77,7 @@ function main()
                 $offerInfo->barcode = $barcode;
                 $offer->barcode = $barcode;
             } else {
+                $offerInfo->articul = $offer->articul;
                 $offer->barcode = $offerInfo->barcode;
             }
 
