@@ -36,15 +36,15 @@ function main(){
         ];
     }
     foreach ($offers as $offer) {
-        $dict[$offer->id]['stock'] = $offer->available;
+        $dict[$offer->id]['stock'] = $offer->outlet;
     }
     $warehouseId = $config->get("warehouseId");
     foreach ($offers as $offer) {
-        $dict[$offer->id]['stock'] = $offer->available;
+        $dict[$offer->id]['stock'] = $offer->outlet;
         $dict[$offer->id]['warehouseId'] = $warehouseId;
     }
     foreach (array_chunk(array_values($dict), 1000) as $arStock) {
-        $query->stocks($warehouseId,$arStock);
+        print_r($query->stocks($warehouseId,$arStock));
 //        print_r("test");
     }
 }
