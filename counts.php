@@ -44,8 +44,14 @@ function main(){
         $dict[$offer->id]['warehouseId'] = $warehouseId;
     }
     foreach (array_chunk(array_values($dict), 1000) as $arStock) {
-        $query->stocks($warehouseId,$arStock);
-//        print_r("test");
+        try {
+            $query->stocks($warehouseId,$arStock);
+        }
+        catch (\Exception $e) {
+            $log = date('Y-m-d H:i:s request') .' '.print_r($arStock, true). ' response:'.print_r(unserialize($e->getMessage()), true);
+            file_put_contents(__DIR__ . '/logs/log.txt', $log . PHP_EOL, FILE_APPEND);
+            continue;
+        }
     }
 }
 

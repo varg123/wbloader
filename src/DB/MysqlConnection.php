@@ -24,6 +24,7 @@ class MysqlConnection
         if ($this->connection->connect_error) {
             throw new \Exception("Ошибка подключения к бд");
         }
+        mysqli_set_charset($this->connection, 'utf8');
     }
 
     public function getInfo($id)
