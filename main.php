@@ -52,7 +52,7 @@ function cardAction($query, $offer)
 
 function main()
 {
-    $config = new \Config\AppConfig("config.json");
+    $config = new \Config\AppConfig(__DIR__."/config.json");
 
     $db = new MysqlConnection($config);
 
