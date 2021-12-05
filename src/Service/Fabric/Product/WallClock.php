@@ -89,7 +89,8 @@ class WallClock extends BaseProduct
 
         $fields[] = new MultiAddinField('Доп. опции часов', $cleanOptions);
 
-        $description = "{$offer->name}.\n ";
+        $description = "";
+//        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description .= "{$name}: $value.\n ";
         }
