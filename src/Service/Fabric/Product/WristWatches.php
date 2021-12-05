@@ -121,7 +121,8 @@ class WristWatches extends BaseProduct
 
         $fields[] = new KeysField($offer->vat);
 
-        $description = "{$offer->name}.\n ";
+        $description = "";
+//        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description.="{$name}: $value.\n ";
         }

@@ -93,7 +93,8 @@ class TableClock extends BaseProduct
         }
         $fields[] = new MultiAddinField('Доп. опции интерьерных часов', $cleanOptions);
 
-        $description = "{$offer->name}.\n ";
+        $description = "";
+//        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description.="{$name}: $value.\n ";
         }
