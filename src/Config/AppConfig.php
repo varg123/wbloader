@@ -8,7 +8,7 @@ class AppConfig
 
     public function __construct($fileName)
     {
-        $content = file_get_contents($fileName);
+        $content = file_get_contents(__DIR__.'/'.$fileName);
         $this->data = json_decode($content,true);
     }
 
