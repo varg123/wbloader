@@ -55,6 +55,7 @@ class Figurines extends BaseProduct
 
         //необязательные
 
+        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         if ((int)$offer->length) {
             $fields[] = new AddinField('Глубина упаковки', null, (int)$offer->length / 10);
         }
