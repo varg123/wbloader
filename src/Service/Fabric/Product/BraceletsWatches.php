@@ -62,6 +62,7 @@ class BraceletsWatches extends BaseProduct
         $fields[] = new SupplierArticleNumberField($offer->articul2);
         //необязательные
 
+        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         if ((int)$offer->length) {
             $fields[] = new AddinField('Глубина упаковки', null, (int)$offer->length / 10);
         }

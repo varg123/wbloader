@@ -55,6 +55,7 @@ class WallClock extends BaseProduct
 
         //необязательные
 
+        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         $fields[] = new SupplierArticleNumberField($offer->articul2);
         $fields[] = new AddinField('Механизм часов', $offer->mechanism);
         $fields[] = new KeysField($offer->vat);

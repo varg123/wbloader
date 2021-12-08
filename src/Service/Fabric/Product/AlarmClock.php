@@ -53,6 +53,7 @@ class AlarmClock extends BaseProduct
 
 
         //необязательные
+        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         $fields[] = new SupplierArticleNumberField($offer->articul2);
 
         if ((int)$offer->length) {
