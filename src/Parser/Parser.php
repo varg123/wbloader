@@ -31,7 +31,7 @@ class Parser implements \Parser\IParser
         foreach ($offers as $offerData) {
             $offer = [];
             $offer['id'] = (string)$offerData->attributes()['id'];
-            $offer['articul2'] = 'id'.$offer['id'];
+            $offer['articul2'] = 'idh'.$offer['id'];
             $offer['price'] = (string)((int)$offerData->price);
 
             foreach ((array)$offerData->categoryId as $categoryId) {
