@@ -39,6 +39,7 @@ class BrandField implements IField
     protected $barnds = [
         "нет бренда" => "нет бренда",
         "ПИЛОТ" => "ПИЛОТ",
+        "SLAZENGER" => "SLAZENGER",
         "ANNE KLEIN" => "ANNE KLEIN",
         "CITIZEN" => "CITIZEN",
         "FESTINA" => "Festina",
