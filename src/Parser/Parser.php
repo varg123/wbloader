@@ -19,7 +19,7 @@ class Parser implements \Parser\IParser
 
         $result = [];
         $xlmData = file_get_contents($this->url);
-        $xml = new \SimpleXMLElement($xlmData);
+        $xml = new \SimpleXMLElement($xlmData, LIBXML_COMPACT | LIBXML_PARSEHUGE);
 
         $categories = $xml->xpath('/yml_catalog/shop/categories/category');
         foreach ($categories as $categoty) {
