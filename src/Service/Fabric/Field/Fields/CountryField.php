@@ -31,6 +31,7 @@ class CountryField implements IField
 
     protected $countries = [
         "Автопроставки" => "Россия",
+        "CERTINA" => "Швейцария",
         "SLAZENGER" => "Китай",
         "ПИЛОТ" => "Китай",
         "CITIZEN" => "Япония",
