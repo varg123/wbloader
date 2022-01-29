@@ -72,7 +72,8 @@ class TableClock extends BaseProduct
             $fields[] = new AddinField('Высота упаковки', null, (int)$offer->height / 10);
         }
 
-        $fields[] = new SupplierArticleNumberField('idTest' . $offer->id);
+        //todo: перезалить
+        $fields[] = new SupplierArticleNumberField($offer->articul2);
 
         $fields[] = new KeysField($offer->vat);
 

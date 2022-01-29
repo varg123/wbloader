@@ -31,8 +31,8 @@ class Parser implements \Parser\IParser
         foreach ($offers as $offerData) {
             $offer = [];
             $offer['id'] = (string)$offerData->attributes()['id'];
-            $offer['articul2'] = 'idkr'.$offer['id'];
-            $offer['price'] = (string)((int)$offerData->price*1.3);
+            $offer['articul2'] = 'idkr' . $offer['id'];
+            $offer['price'] = (string)((int)$offerData->price * 1.3);
 
             foreach ((array)$offerData->categoryId as $categoryId) {
                 $categoryId = (string)$categoryId;
@@ -169,7 +169,19 @@ class Parser implements \Parser\IParser
     protected function filterOffers($offerObj)
     {
 
-//        if (in_array($offerObj->id,[110331])) {
+//        $ar = [
+//            97101,
+//            108213,
+//            110427,
+//            99778,
+//            103970,
+//            111207,
+//            105445,
+//            111221,
+//
+//        ];
+//
+//        if (in_array($offerObj->id, $ar)) {
             return true;
 //        }
 //        return false;
