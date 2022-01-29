@@ -4,6 +4,7 @@ namespace Service\Fabric;
 
 use Service\DTO\Offer;
 use Service\Fabric\Product\AlarmClock;
+use Service\Fabric\Product\AutoParts;
 use Service\Fabric\Product\BraceletsWatches;
 use Service\Fabric\Product\Figurines;
 use Service\Fabric\Product\NullProduct;
@@ -44,6 +45,9 @@ class ProductFabric
                 break;
             case 'статуэтки':
                 $product = new Figurines($offer);
+                break;
+            case 'Автопроставки':
+                $product = new AutoParts($offer);
                 break;
             default:
                 throw new \Exception("не описанная категория");
@@ -91,6 +95,9 @@ class ProductFabric
                 break;
             case 'статуэтки':
                 $product = new Figurines($offer);
+                break;
+            case 'Автопроставки':
+                $product = new AutoParts($offer);
                 break;
             default:
                 throw new \Exception("не описанная категория");
