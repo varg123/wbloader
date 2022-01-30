@@ -15,7 +15,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 
 function main(){
-    $config = new \Config\AppConfig(__DIR__."/config.json");
+    $config = new \Config\AppConfig("config.json");
 
     $db = new MysqlConnection($config);
 
@@ -39,6 +39,7 @@ function main(){
     /**
      * @var $offer \Service\DTO\Offer
      */
+    print_r($offer->price);
     foreach ($offers as $offer) {
         $dict[$offer->id]['price'] = (int)$offer->price;
     }
@@ -49,14 +50,14 @@ function main(){
             $result[] = new \WBApi\DTO\Price($item);
         }
     }
+    print_r($result);
     foreach ($result as $arPrice) {
         try {
             $res = $query->prices([$arPrice]);
+            print_r($res);
         }
         catch ( \Exception $e) {
-            $log = date('Y-m-d H:i:s request') .' '.print_r($arPrice, true). ' response:'.print_r(unserialize($e->getMessage()), true);
-            file_put_contents(__DIR__ . '/logs/log.txt', $log . PHP_EOL, FILE_APPEND);
-            continue;
+            print_r($e->getMessage());
         }
     }
 }

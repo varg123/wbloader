@@ -32,10 +32,10 @@ class KeysField implements IField
             $i+=1;
             if($i>2) break;
         }
-//        $card->addin[] = new Addin([
-//            'type' => "Ключевые слова",
-//            'params' => $params
-//        ]);
+        $card->addin[] = new Addin([
+            'type' => "Ключевые слова",
+            'params' => $params
+        ]);
         return $card;
     }
 }

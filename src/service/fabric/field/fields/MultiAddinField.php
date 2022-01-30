@@ -37,7 +37,7 @@ class MultiAddinField implements IField
                 ];
                 $i+=1;
             }
-            if ($i>3) break;
+            if ($i>5) break;
         }
 
         if ($params) {

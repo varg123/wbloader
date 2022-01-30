@@ -42,12 +42,12 @@ class TableClock extends BaseProduct
             new AddinField('Тнвэд', "9105990000"),
         ];
 
-//        if($offer->materialBody) {
-//            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
-//        }
-//        else {
-//            $fields[]= new AddinField('Материал корпуса', "в описании");
-//        }
+        if($offer->materialBody) {
+            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
+        }
+        else {
+            $fields[]= new AddinField('Материал корпуса', "в описании");
+        }
 
 
         $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture,[
@@ -58,7 +58,6 @@ class TableClock extends BaseProduct
 
         //необязательные
 
-        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
 
         if ((int)$offer->length) {
             $fields[] = new AddinField('Глубина упаковки', null, (int)$offer->length / 10);
@@ -72,8 +71,7 @@ class TableClock extends BaseProduct
             $fields[] = new AddinField('Высота упаковки', null, (int)$offer->height / 10);
         }
 
-        //todo: перезалить
-        $fields[] = new SupplierArticleNumberField($offer->articul2);
+        $fields[] = new SupplierArticleNumberField('idTest' . $offer->id);
 
         $fields[] = new KeysField($offer->vat);
 
@@ -95,8 +93,7 @@ class TableClock extends BaseProduct
         }
         $fields[] = new MultiAddinField('Доп. опции интерьерных часов', $cleanOptions);
 
-        $description = "";
-//        $description = "{$offer->name}.\n ";
+        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description.="{$name}: $value.\n ";
         }
