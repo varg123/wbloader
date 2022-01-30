@@ -131,5 +131,6 @@ class CountryField implements IField
         "САЛЮТ" => "Россия",
         "NICOLE TIME" => "Россия",
         "СЛАВА" => "Россия",
+        "МОЛНИЯ" => "Россия",
     ];
 }

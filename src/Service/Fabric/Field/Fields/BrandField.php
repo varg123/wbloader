@@ -139,5 +139,6 @@ class BrandField implements IField
         "HIRSCH" => "HIRSCH",
         "TIMEX" => "TIMEX",
         "SUUNTO" => "SUUNTO Watch",
+        "МОЛНИЯ" => "МОЛНИЯ",
     ];
 }

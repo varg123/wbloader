@@ -24,6 +24,7 @@ class ProductFabric
         $product = null;
         switch ($offer->category) {
             case 'будильники':
+            case 'метеостанции':
                 $product = new AlarmClock($offer);
                 break;
             case 'настольные часы':
@@ -38,6 +39,7 @@ class ProductFabric
             case 'Детские часы':
             case 'Часы наклейки':
             case 'Stailer':
+            case 'карманные часы':
                 $product = new WristWatches($offer);
                 break;
             case 'ремешки':
@@ -77,6 +79,7 @@ class ProductFabric
         $product = null;
         switch ($offer->category) {
             case 'будильники':
+            case 'метеостанции':
                 $product = new AlarmClock($offer);
                 break;
             case 'настольные часы':
@@ -91,6 +94,7 @@ class ProductFabric
             case 'Детские часы':
             case 'Часы наклейки':
             case 'Stailer':
+            case 'карманные часы':
                 $product = new WristWatches($offer);
                 break;
             case 'ремешки':

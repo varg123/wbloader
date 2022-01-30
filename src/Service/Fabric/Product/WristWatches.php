@@ -50,7 +50,7 @@ class WristWatches extends BaseProduct
         }
 //
         if ($offer->materialBracelet) {
-            $fields[] = new AddinField('Материал браслета',  $offer->materialBracelet);
+//            $fields[] = new AddinField('Материал браслета',  $offer->materialBracelet);
         } else {
 //            $fields[] = new AddinField('Материал браслета', 'в описании');
         }
@@ -99,6 +99,9 @@ class WristWatches extends BaseProduct
             $fields[] = new AddinField('Гарантийный срок',  $offer->guarantee);
         }
         if ($offer->protectionClass) {
+            if ($offer->protectionClass='неводозащищенные')  {
+                $offer->protectionClass='';
+            }
             $fields[] = new AddinField('Класс водонепроницаемости',  $offer->protectionClass);
         }
 //        if ($offer->mechanism) {
