@@ -42,12 +42,12 @@ class TableClock extends BaseProduct
             new AddinField('Тнвэд', "9105990000"),
         ];
 
-        if($offer->materialBody) {
-            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
-        }
-        else {
-            $fields[]= new AddinField('Материал корпуса', "в описании");
-        }
+//        if($offer->materialBody) {
+//            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
+//        }
+//        else {
+//            $fields[]= new AddinField('Материал корпуса', "в описании");
+//        }
 
 
         $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture,[

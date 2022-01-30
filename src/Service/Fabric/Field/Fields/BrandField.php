@@ -129,7 +129,7 @@ class BrandField implements IField
         "VST" => "VST",
         "Wainer" => "Wainer",
         "WENDOX" => "WENDOX",
-        "ZIPPO" => "ZIPPO",
+        "ZIPPO" => "Zippo",
         "ВОСТОК" => "ВОСТОК",
         "САТУРН" => "САТУРН",
         "УТЕС" => "УТЕС",

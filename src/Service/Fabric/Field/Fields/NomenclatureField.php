@@ -78,7 +78,7 @@ class NomenclatureField implements IField
 
                 $colors = $this->colors;
                 foreach ($colors as $key => $color) {
-                    if (!$this->colorsDict[$color]) unset($colors[$key]);
+                    if (!self::$colorsDict[$color]) unset($colors[$key]);
                 }
                 if ($colors) {
                     $color  =  array_shift($colors);
@@ -161,7 +161,7 @@ class NomenclatureField implements IField
 
             $colors = $this->colors;
             foreach ($colors as $key => $color) {
-                if (!$this->colorsDict[$color]) unset($colors[$key]);
+                if (!self::$colorsDict[$color]) unset($colors[$key]);
             }
             if ($colors) {
                 $color  =  array_shift($colors);
@@ -218,7 +218,7 @@ class NomenclatureField implements IField
         return $card;
     }
 
-    private $colorsDict =  [
+    public static $colorsDict =  [
         "cине-морской" => "cине-морской",
         "cиний лён" => "cиний лён",
         "cиняя волна" => "cиняя волна",
