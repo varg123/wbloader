@@ -16,7 +16,7 @@ use Service\Fabric\Field\Fields\ObjectField;
 use Service\Fabric\Field\Fields\SexField;
 use Service\Fabric\Field\Fields\SupplierArticleNumberField;
 
-class AlarmClock extends BaseProduct
+class Figurines extends BaseProduct
 {
 
     protected $offer = null;
@@ -34,11 +34,11 @@ class AlarmClock extends BaseProduct
         $offer = $this->offer;
 
         $fields = [
-            new ObjectField("Будильники электронные"),
+            new ObjectField("Статуэтки"),
             new BrandField($offer->vendor),
             new CountryField($offer->vendor),
-            new AddinField('Тнвэд', "9105110000"),
-            new AddinField('Наименование', $offer->name),
+            new AddinField('Тнвэд', "6810990000"),
+            new AddinField('Материал изделия', "в описании"),
         ];
 
         if ($offer->guration) {
@@ -48,42 +48,36 @@ class AlarmClock extends BaseProduct
             $fields[] = new AddinField('Комплектация',  'в описании');
         }
 
-        $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture, [
-        ]);
+
+        $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture);
+        $fields[] = new SupplierArticleNumberField($offer->articul2);
 
 
         //необязательные
-        $fields[] = new SupplierArticleNumberField($offer->articul2);
 
+        $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         if ((int)$offer->length) {
             $fields[] = new AddinField('Глубина упаковки', null, (int)$offer->length / 10);
         }
         if ((int)$offer->width) {
             $fields[] = new AddinField('Ширина упаковки', null, (int)$offer->width / 10);
         }
+
         if ((int)$offer->height) {
             $fields[] = new AddinField('Высота упаковки', null, (int)$offer->height / 10);
         }
 
-        if ($offer->guarantee) {
-            $fields[] = new AddinField('Гарантийный срок',  $offer->guarantee);
-        }
-        if($offer->materialBody) {
-            $fields[]= new AddinField('Материал корпуса', $offer->materialBody);
-        }
-
-
-
 
         $fields[] = new KeysField($offer->vat);
 
-        $description = "{$offer->name}.\n ";
+
+        $description = "";
+//        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description.="{$name}: $value.\n ";
         }
         $fields[] = new AddinField('Описание', $description);
         return $fields;
     }
-
 
 }

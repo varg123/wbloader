@@ -27,8 +27,10 @@ class NomenclatureField implements IField
         $this->price = $price;
         $this->size = $size;
 
-        foreach (array_unique($colors) as $color) {
-            if ($color) $this->colors[] = $color;
+        if ($colors) {
+            foreach (array_unique($colors) as $color) {
+                if ($color) $this->colors[] = $color;
+            }
         }
     }
 
@@ -76,7 +78,7 @@ class NomenclatureField implements IField
 
                 $colors = $this->colors;
                 foreach ($colors as $key => $color) {
-                    if (!$this->colorsDict[$color]) unset($colors[$key]);
+                    if (!self::$colorsDict[$color]) unset($colors[$key]);
                 }
                 if ($colors) {
                     $color  =  array_shift($colors);
@@ -159,7 +161,7 @@ class NomenclatureField implements IField
 
             $colors = $this->colors;
             foreach ($colors as $key => $color) {
-                if (!$this->colorsDict[$color]) unset($colors[$key]);
+                if (!self::$colorsDict[$color]) unset($colors[$key]);
             }
             if ($colors) {
                 $color  =  array_shift($colors);
@@ -216,7 +218,7 @@ class NomenclatureField implements IField
         return $card;
     }
 
-    private $colorsDict =  [
+    public static $colorsDict =  [
         "cине-морской" => "cине-морской",
         "cиний лён" => "cиний лён",
         "cиняя волна" => "cиняя волна",
@@ -802,9 +804,17 @@ class NomenclatureField implements IField
             'r'=> '18 мм',
             'rr'=> '18'
         ],
+        '19 мм'=> [
+            'r'=> '19 мм',
+            'rr'=> '19'
+        ],
         '20 мм'=> [
             'r'=> '20 мм',
             'rr'=> '20'
+        ],
+        '21 мм'=> [
+            'r'=> '21 мм',
+            'rr'=> '21'
         ],
         '22 мм'=> [
             'r'=> '22 мм',
@@ -849,6 +859,10 @@ class NomenclatureField implements IField
         '24х20 мм'=> [
             'r'=> '24 мм',
             'rr'=> '24'
+        ],
+        '24х18 мм'=> [
+            'r'=> '24 мм',
+            'rr'=> '18'
         ],
         '24х24 мм'=> [
             'r'=> '24 мм',

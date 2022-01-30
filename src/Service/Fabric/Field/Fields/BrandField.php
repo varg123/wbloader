@@ -37,6 +37,10 @@ class BrandField implements IField
     }
 
     protected $barnds = [
+        "нет бренда" => "нет бренда",
+        "CERTINA" => "CERTINA",
+        "ПИЛОТ" => "ПИЛОТ",
+        "SLAZENGER" => "SLAZENGER",
         "ANNE KLEIN" => "ANNE KLEIN",
         "CITIZEN" => "CITIZEN",
         "FESTINA" => "Festina",
@@ -69,7 +73,7 @@ class BrandField implements IField
         "СПЕКТР" => "Спектр",
         "INOX plus" => "INOX",
         "COVER" => "Cover",
-        "ВЕСНА" => "ВЕСНА",
+        "ВЕСНА" => "Весна часы",
         "STELLA" => "Stella",
         "НИКА" => "Ника",
         "Q_Q" => "Q&Q",
@@ -125,7 +129,7 @@ class BrandField implements IField
         "VST" => "VST",
         "Wainer" => "Wainer",
         "WENDOX" => "WENDOX",
-        "ZIPPO" => "ZIPPO",
+        "ZIPPO" => "Zippo",
         "ВОСТОК" => "ВОСТОК",
         "САТУРН" => "САТУРН",
         "УТЕС" => "УТЕС",
@@ -133,6 +137,8 @@ class BrandField implements IField
         "Мила" => "Мила",
         "МИЛА" => "МИЛА",
         "HIRSCH" => "HIRSCH",
-        "TIMEX" => "TIMEX"
+        "TIMEX" => "TIMEX",
+        "SUUNTO" => "SUUNTO Watch",
+        "МОЛНИЯ" => "МОЛНИЯ",
     ];
 }

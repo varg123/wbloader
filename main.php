@@ -52,7 +52,7 @@ function cardAction($query, $offer)
 
 function main()
 {
-    $config = new \Config\AppConfig("config.json");
+    $config = new \Config\AppConfig(__DIR__."/config.json");
 
     $db = new MysqlConnection($config);
 
@@ -77,6 +77,7 @@ function main()
                 $offerInfo->barcode = $barcode;
                 $offer->barcode = $barcode;
             } else {
+                $offerInfo->articul = $offer->articul;
                 $offer->barcode = $offerInfo->barcode;
             }
 
@@ -104,6 +105,8 @@ function main()
             $offerInfo->lastError = '';
             $db->setInfo($offerInfo);
         } catch (\Exception $e) {
+            $log = date('Y-m-d H:i:s request') .' '.print_r($offer, true). ' response:'.print_r($e->getMessage(), true);
+            file_put_contents(__DIR__ . '/logs/log.txt', $log . PHP_EOL, FILE_APPEND);
             $offerInfo->lastError = $e->getMessage();
             $db->setInfo($offerInfo);
             continue;
