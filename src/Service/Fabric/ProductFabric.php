@@ -6,6 +6,7 @@ use Service\DTO\Offer;
 use Service\Fabric\Product\AlarmClock;
 use Service\Fabric\Product\BraceletsWatches;
 use Service\Fabric\Product\Figurines;
+use Service\Fabric\Product\Lighter;
 use Service\Fabric\Product\NullProduct;
 use Service\Fabric\Product\TableClock;
 use Service\Fabric\Product\WallClock;
@@ -22,6 +23,7 @@ class ProductFabric
         $product = null;
         switch ($offer->category) {
             case 'будильники':
+            case 'метеостанции':
                 $product = new AlarmClock($offer);
                 break;
             case 'настольные часы':
@@ -36,6 +38,7 @@ class ProductFabric
             case 'Детские часы':
             case 'Часы наклейки':
             case 'Stailer':
+            case 'карманные часы':
                 $product = new WristWatches($offer);
                 break;
             case 'ремешки':
@@ -44,6 +47,12 @@ class ProductFabric
                 break;
             case 'статуэтки':
                 $product = new Figurines($offer);
+                break;
+            case 'Автопроставки':
+                $product = new AutoParts($offer);
+                break;
+            case 'Зажигалки':
+                $product = new Lighter($offer);
                 break;
             default:
                 throw new \Exception("не описанная категория");
@@ -69,6 +78,7 @@ class ProductFabric
         $product = null;
         switch ($offer->category) {
             case 'будильники':
+            case 'метеостанции':
                 $product = new AlarmClock($offer);
                 break;
             case 'настольные часы':
@@ -83,6 +93,7 @@ class ProductFabric
             case 'Детские часы':
             case 'Часы наклейки':
             case 'Stailer':
+            case 'карманные часы':
                 $product = new WristWatches($offer);
                 break;
             case 'ремешки':
@@ -91,6 +102,12 @@ class ProductFabric
                 break;
             case 'статуэтки':
                 $product = new Figurines($offer);
+                break;
+            case 'Автопроставки':
+                $product = new AutoParts($offer);
+                break;
+            case 'Зажигалки':
+                $product = new Lighter($offer);
                 break;
             default:
                 throw new \Exception("не описанная категория");

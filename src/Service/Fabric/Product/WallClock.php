@@ -57,7 +57,19 @@ class WallClock extends BaseProduct
 
         $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
         $fields[] = new SupplierArticleNumberField($offer->articul2);
-        $fields[] = new AddinField('Механизм часов', $offer->mechanism);
+        if ($offer->mechanism) {
+            if ($offer->mechanism=='электронный') {
+                $offer->mechanism='Электронный кварцевый';
+            }
+            if ($offer->mechanism=='механический') {
+                $offer->mechanism='механические';
+            }
+            if ($offer->mechanism=='кварцевый') {
+                $offer->mechanism='Кварцевый';
+            }
+
+            $fields[] = new AddinField('Механизм часов',  $offer->mechanism);
+        }
         $fields[] = new KeysField($offer->vat);
 
         if ((int)$offer->width) {
@@ -88,7 +100,7 @@ class WallClock extends BaseProduct
             }
         }
 
-        $fields[] = new MultiAddinField('Доп. опции часов', $cleanOptions);
+        $fields[] = new MultiAddinField('Доп. опции часов', array_slice($cleanOptions,0,3));
 
         $description = "";
 //        $description = "{$offer->name}.\n ";
