@@ -48,9 +48,9 @@ class BraceletsWatches extends BaseProduct
         }
 
         if ($offer->materialBracelet) {
-            $fields[] = new AddinField('Материал браслета, ремешка', $offer->materialBracelet);
+//            $fields[] = new AddinField('Материал браслета, ремешка', $offer->materialBracelet);
         } else {
-            $fields[] = new AddinField('Материал браслета, ремешка', 'в описании');
+//            $fields[] = new AddinField('Материал браслета, ремешка', 'в описании');
         }
 
 

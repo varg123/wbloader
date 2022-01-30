@@ -38,7 +38,7 @@ class AlarmClock extends BaseProduct
             new BrandField($offer->vendor),
             new CountryField($offer->vendor),
             new AddinField('Тнвэд', "9105110000"),
-            new AddinField('Наименование', $offer->name),
+            new AddinField('Наименование', mb_substr($offer->name,0,100)),
         ];
 
         if ($offer->guration) {

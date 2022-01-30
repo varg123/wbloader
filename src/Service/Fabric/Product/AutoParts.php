@@ -59,8 +59,7 @@ class AutoParts extends BaseProduct
         if ((int)$offer->height) {
             $fields[] = new AddinField('Высота упаковки', null, (int)$offer->height / 10);
         }
-        $desc = preg_replace('/[^A-Za-z0-9А-Яа-я\-\s\:\,]/ui', '', $offer->description);
-        $fields[] = new AddinField('Описание', mb_substr($desc,0,1000));
+        $fields[] = new AddinField('Описание', mb_substr($offer->description,0,1000));
         return $fields;
     }
 

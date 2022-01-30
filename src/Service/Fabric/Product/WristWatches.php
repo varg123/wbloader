@@ -50,11 +50,12 @@ class WristWatches extends BaseProduct
         }
 //
         if ($offer->materialBracelet) {
-            $fields[] = new AddinField('Материал браслета',  $offer->materialBracelet);
+//            $fields[] = new AddinField('Материал браслета',  $offer->materialBracelet);
         } else {
-            $fields[] = new AddinField('Материал браслета', 'в описании');
+//            $fields[] = new AddinField('Материал браслета', 'в описании');
         }
         $fields[] = new SexField($offer->sex);
+
 
 
         $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture, [
@@ -82,22 +83,35 @@ class WristWatches extends BaseProduct
         $fields[] = new SupplierArticleNumberField($offer->articul2);
 //
         if ($offer->mechanism) {
+            if ($offer->mechanism=='электронный') {
+                $offer->mechanism='Электронный кварцевый';
+            }
+            if ($offer->mechanism=='механический') {
+                $offer->mechanism='механические';
+            }
+
+            if ($offer->mechanism=='кварцевый') {
+                $offer->mechanism='Кварцевый';
+            }
             $fields[] = new AddinField('Механизм часов',  $offer->mechanism);
         }
         if ($offer->guarantee) {
             $fields[] = new AddinField('Гарантийный срок',  $offer->guarantee);
         }
         if ($offer->protectionClass) {
+            if ($offer->protectionClass='неводозащищенные')  {
+                $offer->protectionClass='';
+            }
             $fields[] = new AddinField('Класс водонепроницаемости',  $offer->protectionClass);
         }
-        if ($offer->mechanism) {
-            $fields[] = new AddinField('Механизм часов',  $offer->mechanism);
-        }
+//        if ($offer->mechanism) {
+//            $fields[] = new AddinField('Механизм часов',  $offer->mechanism);
+//        }
         if ($offer->form) {
 //            $fields[] = new AddinField('Форма корпуса',  $offer->form);
         }
-        if ($offer->colorDial) {
-            $fields[] = new AddinField('Цвет циферблата',  $offer->colorDial);
+        if ($offer->colorDial and isset(NomenclatureField::$colorsDict[$offer->colorDial])) {
+            $fields[] = new AddinField('Цвет циферблата',  NomenclatureField::$colorsDict[$offer->colorDial]);
         }
 
 
