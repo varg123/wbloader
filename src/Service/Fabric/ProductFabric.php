@@ -4,6 +4,7 @@ namespace Service\Fabric;
 
 use Service\DTO\Offer;
 use Service\Fabric\Product\AlarmClock;
+use Service\Fabric\Product\AutoParts;
 use Service\Fabric\Product\BraceletsWatches;
 use Service\Fabric\Product\Figurines;
 use Service\Fabric\Product\Lighter;
