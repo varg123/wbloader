@@ -10,6 +10,7 @@ use Service\Fabric\Field\Fields\AddinField;
 use Service\Fabric\Field\Fields\BrandField;
 use Service\Fabric\Field\Fields\CountryField;
 use Service\Fabric\Field\Fields\KeysField;
+use Service\Fabric\Field\Fields\MaterialBraceletField;
 use Service\Fabric\Field\Fields\MaterialGlassField;
 use Service\Fabric\Field\Fields\NomenclatureField;
 use Service\Fabric\Field\Fields\ObjectField;
@@ -41,18 +42,8 @@ class BraceletsWatches extends BaseProduct
             new SexField($offer->sex),
         ];
 
-        if ($offer->guration) {
-            $fields[] = new AddinField('Комплектация', $offer->guration);
-        } else {
-            $fields[] = new AddinField('Комплектация', 'в описании');
-        }
 
-        if ($offer->materialBracelet) {
-//            $fields[] = new AddinField('Материал браслета, ремешка', $offer->materialBracelet);
-        } else {
-//            $fields[] = new AddinField('Материал браслета, ремешка', 'в описании');
-        }
-
+        $fields[] = new MaterialBraceletField($offer->materialBracelet);
 
         $fields[] = new NomenclatureField($offer->articul, $offer->barcode, $offer->price, $offer->picture, [
             $offer->colorBracelet
@@ -60,32 +51,23 @@ class BraceletsWatches extends BaseProduct
 
 
         $fields[] = new SupplierArticleNumberField($offer->articul2);
-        //необязательные
-
         $fields[] = new AddinField('Наименование', mb_substr($offer->name,0,100));
-        if ((int)$offer->length) {
-            $fields[] = new AddinField('Глубина упаковки', null, (int)$offer->length / 10);
+
+        $fields[] = new AddinField('Глубина упаковки', null, 12);
+        $fields[] = new AddinField('Ширина упаковки', null, 0.5);
+        $fields[] = new AddinField('Высота упаковки', null, 5);
+        if((int)$offer->widthStrap) {
+            $fields[] = new AddinField('Ширина ремешка', null, (int)$offer->widthStrap/10);
         }
-
-        if ((int)$offer->width) {
-            $fields[] = new AddinField('Ширина упаковки', null, (int)$offer->width / 10);
-        }
-
-        if ((int)$offer->height) {
-            $fields[] = new AddinField('Высота упаковки', null, (int)$offer->height / 10);
-        }
+        $fields[] = new AddinField('Комплектация', 'упаковка, ремешок');
 
 
-        $fields[] = new KeysField($offer->vat);
 
 
         $description = "";
-//        $description = "{$offer->name}.\n ";
         foreach ($offer->params as $name => $value) {
             $description .= "{$name}: $value.\n ";
         }
-
-
         $fields[] = new AddinField('Описание', $description);
         return $fields;
     }
