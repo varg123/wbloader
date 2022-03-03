@@ -168,10 +168,10 @@ class Parser implements \Parser\IParser
      */
     protected function filterOffers($offerObj)
     {
-        if ($offerObj->id==81611) {
+//        if ($offerObj->id==81611) {
 //            print_r($offerObj);
             return true;
-        }
-        return false;
+//        }
+//        return false;
     }
 }
