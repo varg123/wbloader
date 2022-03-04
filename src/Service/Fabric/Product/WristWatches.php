@@ -67,7 +67,7 @@ class WristWatches extends BaseProduct
         $fields[] = new SupplierArticleNumberField($offer->articul2);
 
         if($offer->glass) {
-            $fields[] = new TypeGlassField($offer->glass);
+//            $fields[] = new TypeGlassField($offer->glass);
         }
 
 
