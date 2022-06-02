@@ -74,7 +74,7 @@ class BrandField implements IField
         "INOX plus" => "INOX",
         "COVER" => "Cover",
         "ВЕСНА" => "Весна часы",
-        "STELLA" => "Stella",
+        "STELLA" => "Stella watch",
         "НИКА" => "Ника",
         "Q_Q" => "Q&Q",
         "SINIX" => "Sinix",
