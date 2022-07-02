@@ -25,18 +25,27 @@ function main(){
     $url = $config->get("url");
     $parser = new \Parser\Parser($url);
     $offers = $parser->getData();
-    /**
-     * @var $offer \Service\DTO\Offer
-     */
     $dict = [];
+    $withoutNmId=[];
+    /**
+     * @var $offer \DB\Info
+     */
     foreach ($db->getAllInfo() as $offer) {
+        if(!$offer->nmId) {
+            $withoutNmId[]=$offer->id;
+        }
         $dict[$offer->id]=[
             'barcode' => $offer->barcode,
             'stock' => 0,
         ];
     }
+    /**
+     * @var $offer \Service\DTO\Offer
+     */
     foreach ($offers as $offer) {
-        $dict[$offer->id]['stock'] = $offer->outlet;
+        if(!in_array($offer->id,$withoutNmId)) {
+            $dict[$offer->id]['stock'] = $offer->outlet;
+        }
     }
     $warehouseId = $config->get("warehouseId");
     foreach ($offers as $offer) {
